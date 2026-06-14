@@ -44,9 +44,9 @@ Para mantener el código escalable, testeable y ordenado, el proyecto se ha estr
 5. Ajustar los potenciómetros (P0, P1, P2, P3) para verificar los cambios de voltaje reflejados en tiempo real en la pantalla LCD.
 
 ## Autores
-* [Tu Nombre/Usuario]
-* [Nombre Compañero 1]
-* [Nombre Compañero 2]
+* Sebastian Rivera
+* Benjamin Soto
+* Pablo Urra
 
 ---
 **Nota para la evaluación:** El código encargado de la comunicación serial ha sido desarrollado íntegramente de forma manual, controlando los tiempos de alto y bajo (High/Low) de los pines de salida según la tasa de baudios requerida por el simulador de Proteus.
