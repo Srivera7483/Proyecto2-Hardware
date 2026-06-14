@@ -1,0 +1,11 @@
+program Voltimetro;
+
+uses adc_hal;
+
+begin
+  Inicializar_ADC();
+  while true do
+  begin
+    // Aquí irá el código del Miembro 2 y 3
+  end;
+end.
