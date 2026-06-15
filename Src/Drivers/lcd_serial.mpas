@@ -2,30 +2,16 @@ unit lcd_serial;
 
 interface
 
-{
-  Inicializa el pin de transmisión serial (GP5) en estado de reposo (Idle).
-}
 procedure UART_Init();
-
-{
-  Envía un único carácter por el pin serial usando Bit-Banging.
-  Baud rate: 9600 bps (104 us por bit).
-}
 procedure UART_Write_Char(c: char);
-
-{
-  Envía una cadena completa de texto por el pin serial.
-}
 procedure UART_Write_Text(var texto: string[40]);
 
 implementation
 
-// Definir el pin TX en GP5
 var TX_PIN : sbit at GPIO.B5;
 
 procedure UART_Init();
 begin
-  // El estado de reposo (Idle) de UART es ALTO (1)
   TX_PIN := 1;
 end;
 
@@ -33,28 +19,21 @@ procedure UART_Write_Char(c: char);
 var
   i: byte;
 begin
-  // Bit de Inicio (Start Bit) - Nivel BAJO
   TX_PIN := 0;
   Delay_us(104);
 
-  // Enviar los 8 bits de datos (Data Bits), empezando por el LSB
   for i := 0 to 7 do
   begin
     if (c and 1) = 1 then
       TX_PIN := 1
     else
       TX_PIN := 0;
-    
-    // Desplazar a la derecha para preparar el siguiente bit
     c := c shr 1;
     Delay_us(104);
   end;
 
-  // Bit de Parada (Stop Bit) - Nivel ALTO
   TX_PIN := 1;
   Delay_us(104);
-  
-  // Pequeña pausa adicional entre caracteres para dar tiempo a la pantalla LCD de procesar
   Delay_us(100);
 end;
 
@@ -63,7 +42,6 @@ var
   i: byte;
 begin
   i := 0;
-  // Recorrer la cadena hasta encontrar el carácter nulo (fin de string en Pascal)
   while (texto[i] <> 0) do
   begin
     UART_Write_Char(texto[i]);

@@ -2,65 +2,32 @@ unit adc_hal;
 
 interface
 
-{
-  Procedimiento para inicializar los registros del PIC12F675
-  y preparar los pines para conversión Analógica a Digital.
-}
 procedure Inicializar_ADC();
-
-{
-  Función para leer el valor crudo del ADC (0 a 1023)
-  Recibe: canal (0 a 3)
-  Retorna: valor de 10 bits
-}
 function Leer_ADC(canal: byte): word;
 
 implementation
 
 procedure Inicializar_ADC();
 begin
-  // Apagar comparadores para habilitar pines AN0-AN3
   CMCON := 7;
-
-  // Habilitar pines como entradas analógicas
-  // ANSEL bits 0-3 habilitan los pines, bits 4-6 configuran reloj a Fosc/8
   ANSEL := %00011111;
-
-  // Configurar TRISIO:
-  // GP0-GP4 = 1 (Entradas analógicas)
-  // GP5 = 0 (Salida para TX serial)
   TRISIO := %00011111;
-
-  // Configurar ADCON0:
-  // Bit 7: Justificado a la derecha
-  // Bit 0: Encender módulo ADC
   ADCON0 := %10000001;
 end;
 
 function Leer_ADC(canal: byte): word;
 begin
-  // Asegurar que el canal esté dentro del rango 0-3
   if canal > 3 then
     canal := 0;
 
-  // Limpiar selección previa de canal y configurar el nuevo canal
-  // Los bits de selección están en las posiciones 2 y 3 de ADCON0
   ADCON0 := ADCON0 and %11110011;
   ADCON0 := ADCON0 or (canal shl 2);
-
-  // Tiempo mínimo de adquisición (Sample & Hold)
   Delay_us(20);
-
-  // Iniciar conversión (Poner bit GO/DONE en 1)
   ADCON0.B1 := 1;
-
-  // Esperar a que el hardware termine la conversión
   while (ADCON0.B1 = 1) do
   begin
-    nop; // Espera activa
+    nop;
   end;
-
-  // Retornar el resultado de 10 bits ensamblando ADRESH y ADRESL
   Result := (word(ADRESH) shl 8) or ADRESL;
 end;
 

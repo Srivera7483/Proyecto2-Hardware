@@ -1,11 +1,11 @@
 program Voltimetro;
 
-uses adc_hal;
+uses adc_hal, lcd_serial;
 
 begin
   Inicializar_ADC();
+  UART_Init();
   while true do
   begin
-    // Aquí irá el código del Miembro 2 y 3
   end;
 end.
