@@ -1,12 +1,6 @@
-unit lcd_serial;
+module lcd_serial;
 
-interface
-
-procedure UART_Init();
-procedure UART_Write_Char(c: char);
-procedure UART_Write_Text(var texto: string[40]);
-
-implementation
+implements
 
 var TX_PIN : sbit at GPIO.B5;
 

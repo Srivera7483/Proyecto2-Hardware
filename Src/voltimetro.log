@@ -8,5 +8,5 @@ diagnostics: 0	133	Compilation Started	C:\Users\bsd28\Documents\GitHub\Proyecto2
 hint: 1	1015	Hint: Compiling unit "C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\voltimetro.mpas"	voltimetro.mpas
 hint: 1	1015	Hint: Compiling unit "C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\Drivers\adc_hal.mpas"	adc_hal.mpas
 error: 3	304	Syntax error: Expected "end" but "interface" found	adc_hal.mpas
-error: 9	304	Syntax error: Expected "." but "procedure" found	adc_hal.mpas
-error: 0	102	Finished (with errors): 14 jun. 2026, 19:58:12	voltimetro.mpppi
+error: 5	304	Syntax error: Expected "." but "procedure" found	adc_hal.mpas
+error: 0	102	Finished (with errors): 14 jun. 2026, 20:09:19	voltimetro.mpppi

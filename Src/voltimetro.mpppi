@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=voltimetro.mpas
+Value=Drivers\adc_hal.mpas
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
