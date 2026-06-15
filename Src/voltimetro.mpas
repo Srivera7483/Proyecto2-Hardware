@@ -1,6 +1,6 @@
 program Voltimetro;
 
-uses adc_hal, lcd_serial;
+uses dummy, adc_hal, lcd_serial;
 
 begin
   Inicializar_ADC();

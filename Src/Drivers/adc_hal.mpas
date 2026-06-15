@@ -1,7 +1,5 @@
 unit adc_hal;
 
-interface
-
 procedure Inicializar_ADC();
 function Leer_ADC(canal: byte): word;
 

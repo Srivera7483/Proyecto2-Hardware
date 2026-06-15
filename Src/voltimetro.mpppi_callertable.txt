@@ -1,0 +1,3 @@
+main
+	Inicializar_ADC
+	UART_Init

@@ -1,0 +1,11 @@
+unit dummy;
+
+procedure Test();
+
+implementation
+
+procedure Test();
+begin
+end;
+
+end.
