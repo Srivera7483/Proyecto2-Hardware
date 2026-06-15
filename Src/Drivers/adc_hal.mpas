@@ -1,6 +1,11 @@
-module adc_hal;
+unit adc_hal;
 
-implements
+interface
+
+procedure Inicializar_ADC();
+function Leer_ADC(canal: byte): word;
+
+implementation
 
 procedure Inicializar_ADC();
 begin

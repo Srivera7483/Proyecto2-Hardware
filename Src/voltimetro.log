@@ -1,12 +1,5 @@
-0	1	mPPic.exe -MSF -DBG -pP12F675 -GC -Y -DL -O11111114 -fo4 -N"C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\voltimetro.mpppi" -SP"C:\Users\bsd28\Desktop\sw_arq_hw\mikroPascal PRO for PIC\Defs\" -SP"C:\Users\bsd28\Desktop\sw_arq_hw\mikroPascal PRO for PIC\Uses\P16\" -SP"C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\" -SP"C:\Users\Kuro_Waza\Desktop\sw_arq_hw\mikroPascal PRO for PIC\Defs\" -SP"C:\Users\Kuro_Waza\Desktop\sw_arq_hw\mikroPascal PRO for PIC\Uses\P16\" -SP"C:\Users\Kuro_Waza\Documents\GitHub\Proyecto2-Hardware\Src\" -SP"C:\Users\Kuro_Waza\Documents\GitHub\Proyecto2-Hardware\Src\Drivers\" -SP"C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\Drivers\" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "voltimetro.mpas" "adc_hal.mpas"	 
-warning: 0	1501	Specified search path does not exist: 'C:\Users\Kuro_Waza\Desktop\sw_arq_hw\mikroPascal PRO for PIC\Defs'	 
-warning: 0	1501	Specified search path does not exist: 'C:\Users\Kuro_Waza\Desktop\sw_arq_hw\mikroPascal PRO for PIC\Uses\P16'	 
-warning: 0	1501	Specified search path does not exist: 'C:\Users\Kuro_Waza\Documents\GitHub\Proyecto2-Hardware\Src'	 
-warning: 0	1501	Specified search path does not exist: 'C:\Users\Kuro_Waza\Documents\GitHub\Proyecto2-Hardware\Src\Drivers'	 
+0	1	mPPic.exe -MSF -DBG -pP12F675 -GC -Y -DL -O11111114 -fo4 -N"C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\voltimetro.mpppi" -SP"C:\Users\bsd28\Desktop\sw_arq_hw\mikroPascal PRO for PIC\Defs\" -SP"C:\Users\bsd28\Desktop\sw_arq_hw\mikroPascal PRO for PIC\Uses\P16\" -SP"C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\" -SP"C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\Drivers\" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "voltimetro.mpas" "adc_hal.mpas"	 
 diagnostics: 0	155	Available RAM: 48 [bytes], Available ROM: 1024 [bytes]	 
 diagnostics: 0	133	Compilation Started	C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\voltimetro.mpas
-hint: 1	1015	Hint: Compiling unit "C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\voltimetro.mpas"	voltimetro.mpas
-hint: 1	1015	Hint: Compiling unit "C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\Drivers\adc_hal.mpas"	adc_hal.mpas
-error: 3	304	Syntax error: Expected "end" but "interface" found	adc_hal.mpas
-error: 5	304	Syntax error: Expected "." but "procedure" found	adc_hal.mpas
-error: 0	102	Finished (with errors): 14 jun. 2026, 20:09:19	voltimetro.mpppi
+error: 1	304	Syntax error: Expected "unit" but "module" found	adc_hal.mpas
+error: 0	102	Finished (with errors): 14 jun. 2026, 20:14:58	voltimetro.mpppi

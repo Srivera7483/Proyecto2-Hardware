@@ -35,11 +35,11 @@ Count=0
 [OTHER_FILES]
 Count=0
 [SEARCH_PATH]
-Count=8
+Count=4
 Path0=C:\Users\bsd28\Desktop\sw_arq_hw\mikroPascal PRO for PIC\Defs\
 Path1=C:\Users\bsd28\Desktop\sw_arq_hw\mikroPascal PRO for PIC\Uses\P16\
 Path2=C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\
-Path7=C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\Drivers\
+Path3=C:\Users\bsd28\Documents\GitHub\Proyecto2-Hardware\Src\Drivers\
 [HEADER_PATH]
 Count=0
 [HEADERS]
