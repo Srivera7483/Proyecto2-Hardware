@@ -194,9 +194,24 @@ _main:
 	CALL       _Inicializar_ADC+0
 ;voltimetro.mpas,71 :: 		UART_Init();
 	CALL       _UART_Init+0
-;voltimetro.mpas,73 :: 		while true do
-L__main12:
-;voltimetro.mpas,77 :: 		Escribir_Linea(Leer_ADC(0), 0, Leer_ADC(1), 1);
+;voltimetro.mpas,72 :: 		Delay_ms(200); // Dar tiempo al LCD para inicializar
+	MOVLW      2
+	MOVWF      R11+0
+	MOVLW      4
+	MOVWF      R12+0
+	MOVLW      186
+	MOVWF      R13+0
+L__main11:
+	DECFSZ     R13+0, 1
+	GOTO       L__main11
+	DECFSZ     R12+0, 1
+	GOTO       L__main11
+	DECFSZ     R11+0, 1
+	GOTO       L__main11
+	NOP
+;voltimetro.mpas,74 :: 		while true do
+L__main13:
+;voltimetro.mpas,78 :: 		Escribir_Linea(Leer_ADC(0), 0, Leer_ADC(1), 1);
 	MOVLW      1
 	MOVWF      FARG_Leer_ADC_canal+0
 	CALL       _Leer_ADC+0
@@ -218,7 +233,7 @@ L__main12:
 	MOVF       FLOC__main+1, 0
 	MOVWF      FARG_Escribir_Linea_raw_b+1
 	CALL       _Escribir_Linea+0
-;voltimetro.mpas,78 :: 		Escribir_Linea(Leer_ADC(2), 2, Leer_ADC(3), 3);
+;voltimetro.mpas,79 :: 		Escribir_Linea(Leer_ADC(2), 2, Leer_ADC(3), 3);
 	MOVLW      3
 	MOVWF      FARG_Leer_ADC_canal+0
 	CALL       _Leer_ADC+0
@@ -242,25 +257,25 @@ L__main12:
 	MOVF       FLOC__main+1, 0
 	MOVWF      FARG_Escribir_Linea_raw_b+1
 	CALL       _Escribir_Linea+0
-;voltimetro.mpas,80 :: 		Delay_ms(1000);
+;voltimetro.mpas,81 :: 		Delay_ms(1000);
 	MOVLW      6
 	MOVWF      R11+0
 	MOVLW      19
 	MOVWF      R12+0
 	MOVLW      173
 	MOVWF      R13+0
-L__main16:
+L__main17:
 	DECFSZ     R13+0, 1
-	GOTO       L__main16
+	GOTO       L__main17
 	DECFSZ     R12+0, 1
-	GOTO       L__main16
+	GOTO       L__main17
 	DECFSZ     R11+0, 1
-	GOTO       L__main16
+	GOTO       L__main17
 	NOP
 	NOP
-;voltimetro.mpas,81 :: 		end;
-	GOTO       L__main12
-;voltimetro.mpas,82 :: 		end.
+;voltimetro.mpas,82 :: 		end;
+	GOTO       L__main13
+;voltimetro.mpas,83 :: 		end.
 L_end_main:
 	GOTO       $+0
 ; end of _main

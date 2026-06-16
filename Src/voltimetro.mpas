@@ -69,6 +69,7 @@ end;
 begin
   Inicializar_ADC();
   UART_Init();
+  Delay_ms(200); // Dar tiempo al LCD para inicializar
 
   while true do
   begin

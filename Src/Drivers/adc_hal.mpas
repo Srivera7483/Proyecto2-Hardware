@@ -9,6 +9,7 @@ procedure Inicializar_ADC();
 begin
   CMCON := 7;
   ANSEL := %00011111;
+  GPIO.B5 := 1;
   TRISIO := %00011111;
   ADCON0 := %10000001;
 end;
