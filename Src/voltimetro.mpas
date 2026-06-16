@@ -1,6 +1,6 @@
 program Voltimetro;
 
-uses dummy, adc_hal, lcd_serial, volt_calc;
+uses adc_hal, lcd_serial, volt_calc;
 
 procedure Escribir_Digito(valor: byte);
 begin
@@ -44,8 +44,12 @@ end;
 
 procedure Escribir_Separador();
 begin
+  // 6 caracteres en total para que 17 + 6 + 17 = 40
+  UART_Write_Char(' ');
+  UART_Write_Char(' ');
   UART_Write_Char(' ');
   UART_Write_Char('-');
+  UART_Write_Char(' ');
   UART_Write_Char(' ');
 end;
 
@@ -53,15 +57,13 @@ procedure Escribir_Linea(raw_a: word; canal_a: byte; raw_b: word; canal_b: byte)
 begin
   // Cada canal ocupa 17 caracteres:
   // "CHN 0: 2.50 VOLTS"
-  // Separador ocupa 3 caracteres:
-  // " - "
-  // Total: 17 + 3 + 17 = 37
-  // Se agregan 3 espacios para completar 40 columnas exactas.
+  // Separador ocupa 6 caracteres:
+  // "   -  "
+  // Total: 17 + 6 + 17 = 40 columnas exactas.
 
   Escribir_Canal(canal_a, raw_a);
   Escribir_Separador();
   Escribir_Canal(canal_b, raw_b);
-  Escribir_Espacios(3);
 end;
 
 begin

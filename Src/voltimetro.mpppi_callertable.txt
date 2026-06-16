@@ -1,3 +1,13 @@
 main
 	Inicializar_ADC
 	UART_Init
+	Leer_ADC
+	Escribir_Linea
+		Escribir_Canal
+			Voltaje_Digitos
+				ADC_A_CentiVoltios
+			UART_Write_Char
+			Escribir_Digito
+				UART_Write_Char
+		Escribir_Separador
+			UART_Write_Char
