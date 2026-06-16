@@ -1,0 +1,45 @@
+unit lcd_serial;
+
+procedure UART_Init();
+procedure UART_Write_Char(c: char);
+
+implementation
+
+var TX_PIN : sbit at GPIO.B5;
+
+procedure UART_Init();
+begin
+  CMCON := 7;       // Comparadores apagados
+  TRISIO.B5 := 0;   // GP5 como salida
+  TX_PIN := 1;      // UART en reposo = 1
+end;
+
+procedure UART_Write_Char(c: char);
+var
+  i: byte;
+begin
+  // Start bit
+  TX_PIN := 0;
+  Delay_us(417);    // 2400 baud aprox.
+
+  // 8 bits, LSB primero
+  for i := 0 to 7 do
+  begin
+    if (c and 1) = 1 then
+      TX_PIN := 1
+    else
+      TX_PIN := 0;
+
+    c := c shr 1;
+    Delay_us(417);
+  end;
+
+  // Stop bit
+  TX_PIN := 1;
+  Delay_us(417);
+
+  // Pequeña pausa entre caracteres
+  Delay_us(100);
+end;
+
+end.

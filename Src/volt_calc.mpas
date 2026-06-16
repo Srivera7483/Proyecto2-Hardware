@@ -1,0 +1,64 @@
+unit volt_calc;
+
+function ADC_A_CentiVoltios(adc_raw: word): word;
+procedure Voltaje_Digitos(adc_raw: word; var entero: byte; var dec1: byte; var dec2: byte);
+
+implementation
+
+function ADC_A_CentiVoltios(adc_raw: word): word;
+var
+  i: word;
+  acumulador: word;
+  centi: word;
+begin
+  if adc_raw > 1023 then
+    adc_raw := 1023;
+
+  i := 0;
+  acumulador := 511;
+  centi := 0;
+
+  // centi ~= adc_raw * 500 / 1023
+  // Evita divisiones pesadas y longint para ahorrar ROM/RAM
+  while i < adc_raw do
+  begin
+    Inc(i);
+    acumulador := acumulador + 500;
+
+    if acumulador >= 1023 then
+    begin
+      acumulador := acumulador - 1023;
+      Inc(centi);
+    end;
+  end;
+
+  if centi > 500 then
+    centi := 500;
+
+  Result := centi;
+end;
+
+procedure Voltaje_Digitos(adc_raw: word; var entero: byte; var dec1: byte; var dec2: byte);
+var
+  centi: word;
+begin
+  centi := ADC_A_CentiVoltios(adc_raw);
+
+  entero := 0;
+  while centi >= 100 do
+  begin
+    centi := centi - 100;
+    Inc(entero);
+  end;
+
+  dec1 := 0;
+  while centi >= 10 do
+  begin
+    centi := centi - 10;
+    Inc(dec1);
+  end;
+
+  dec2 := byte(centi);
+end;
+
+end.
