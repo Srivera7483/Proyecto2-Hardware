@@ -11,3 +11,5 @@ main
 				UART_Write_Char
 		Escribir_Separador
 			UART_Write_Char
+	Escribir_Espacios
+		UART_Write_Char

@@ -18,7 +18,7 @@ var
   i: byte;
 begin
   TX_PIN := 0;
-  Delay_us(104);
+  Delay_us(416); // Start bit (2400 baud)
 
   for i := 0 to 7 do
   begin
@@ -27,12 +27,12 @@ begin
     else
       TX_PIN := 0;
     c := c shr 1;
-    Delay_us(104);
+    Delay_us(402); // 416us - 14us overhead = 402us
   end;
 
   TX_PIN := 1;
-  Delay_us(104);
-  Delay_us(100);
+  Delay_us(416); // Stop bit
+  Delay_us(400); // Inter-character delay
 end;
 
 procedure UART_Write_Text(var texto: string[40]);

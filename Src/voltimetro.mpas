@@ -69,15 +69,20 @@ end;
 begin
   Inicializar_ADC();
   UART_Init();
-  Delay_ms(200); // Dar tiempo al LCD para inicializar
+  Delay_ms(3000); // 3 segundos para garantizar que Proteus y el LCD no pierdan el primer byte
 
   while true do
   begin
-    // No usar clear screen ni comandos de cursor.
-    // El LCD 2x40 queda estable si recibe exactamente 80 caracteres por ciclo.
+    // Llenar Fila 1 (40 caracteres)
     Escribir_Linea(Leer_ADC(0), 0, Leer_ADC(1), 1);
+    // Rellenar la memoria invisible del LCD entre Fila 1 y Fila 2 (24 bytes)
+    Escribir_Espacios(24);
+    
+    // Llenar Fila 2 (40 caracteres)
     Escribir_Linea(Leer_ADC(2), 2, Leer_ADC(3), 3);
-
+    // Rellenar la memoria invisible del LCD al final de la Fila 2 (24 bytes)
+    Escribir_Espacios(24);
+    
     Delay_ms(1000);
   end;
 end.
