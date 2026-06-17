@@ -44,7 +44,7 @@ end;
 
 procedure Escribir_Separador();
 begin
-  // 6 caracteres en total para que 17 + 6 + 17 = 40
+ 
   UART_Write_Char(' ');
   UART_Write_Char(' ');
   UART_Write_Char(' ');
@@ -55,11 +55,6 @@ end;
 
 procedure Escribir_Linea(raw_a: word; canal_a: byte; raw_b: word; canal_b: byte);
 begin
-  // Cada canal ocupa 17 caracteres:
-  // "CHN 0: 2.50 VOLTS"
-  // Separador ocupa 6 caracteres:
-  // "   -  "
-  // Total: 17 + 6 + 17 = 40 columnas exactas.
 
   Escribir_Canal(canal_a, raw_a);
   Escribir_Separador();
@@ -69,18 +64,18 @@ end;
 begin
   Inicializar_ADC();
   UART_Init();
-  Delay_ms(3000); // 3 segundos para garantizar que Proteus y el LCD no pierdan el primer byte
+  Delay_ms(3000);
 
   while true do
   begin
-    // Llenar Fila 1 (40 caracteres)
+    
     Escribir_Linea(Leer_ADC(0), 0, Leer_ADC(1), 1);
-    // Rellenar la memoria invisible del LCD entre Fila 1 y Fila 2 (24 bytes)
+    
     Escribir_Espacios(24);
     
-    // Llenar Fila 2 (40 caracteres)
+    
     Escribir_Linea(Leer_ADC(2), 2, Leer_ADC(3), 3);
-    // Rellenar la memoria invisible del LCD al final de la Fila 2 (24 bytes)
+    
     Escribir_Espacios(24);
     
     Delay_ms(1000);
