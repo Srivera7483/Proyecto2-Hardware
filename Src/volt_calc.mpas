@@ -17,9 +17,6 @@ begin
   i := 0;
   acumulador := 511;
   centi := 0;
-
-  // centi ~= adc_raw * 500 / 1023
-  // Evita divisiones pesadas y longint para ahorrar ROM/RAM
   while i < adc_raw do
   begin
     Inc(i);
